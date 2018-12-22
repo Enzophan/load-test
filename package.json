@@ -1,0 +1,15 @@
+{
+  "name": "dispatching-server",
+  "version": "3.5.0",
+  "description": "dispatching-server",
+  "dependencies": {
+    "async": "^2.6.0",
+    "locks": "^0.2.2",
+    "redis": "^2.8.0",
+    "request": "^2.85.0",
+    "socket.io-client": "^2.0.4",
+    "request-promise": "^4.2.2",
+    "lodash": "^4.17.10",
+    "underscore": "^1.8.3"
+  }
+}
