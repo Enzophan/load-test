@@ -121,8 +121,6 @@ redisSetting.on('ready', function () {
                         }
                     };
 
-
-
                     var booking = {
                         method: 'POST',
                         // uri: 'https://dispatch.beta.qup.vn/api/v2/agent/booking/create',
@@ -146,20 +144,6 @@ redisSetting.on('ready', function () {
                         });
 
                 };
-
-                // request(optionsLocal)
-                //     .then(function (parsedBody) {
-                //         // console.log("parsedBody.access_token:", parsedBody.access_token);
-                //         token = _.get(parsedBody, ["access_token"], "");
-                //         console.log("token: ", token);
-                //         requestBookIng(token);
-
-                //     })
-                //     .catch(function (err) {
-
-                //         console.log(err);
-                //     });
-
 
                 sem.wait(function () {
                     console.log('request: ' + count);
