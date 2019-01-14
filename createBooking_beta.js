@@ -5,7 +5,7 @@ var async = require('async');
 var uuid = require('uuid');
 var redis = require('redis');
 var locks = require('locks');
-var urlAPI = require('./config/configAPILocal');
+var urlAPI = require('./config/configAPI');
 
 
 var redisSetting = redis.createClient(6379, "localhost");
@@ -25,7 +25,7 @@ redisSetting.on('ready', function () {
     var count = 0;
 
     async.whilst(
-        function () { return count < 2; },
+        function () { return count < 50; },
         function (callback) {
             async.parallel([
                 function (cback) {
@@ -56,9 +56,9 @@ redisSetting.on('ready', function () {
                     uri: apiUrl + '/oauth/token',
                     body: {
                         "grant_type": "password",
-                        "username": "auto_test",
+                        "username": "auto_migratecard",
                         "password": "demo@12345",
-                        "client_id": "hoanglocal",
+                        "client_id": "migratecard",
                         "client_secret": "222999888"
                     },
                     json: true // Automatically stringifies the body to JSON
@@ -98,7 +98,7 @@ redisSetting.on('ready', function () {
                                 "timezone": "Asia/Saigon"
                             },
                             "pickUpTime": "Now",
-                            "vehicleTypeRequest": "Bike",
+                            "vehicleTypeRequest": "Black Car",
                             "type": 0,
                             "paymentType": 2,
                             "note": "Auto test api",
