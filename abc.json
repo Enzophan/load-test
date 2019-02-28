@@ -1,0 +1,35 @@
+{
+    "limit": 50,
+    "page": 0,
+    "sort": {
+        "time": -1
+    },
+    "query": {
+        "txtSearch": "",
+        "bookingService": "all",
+        "supportService": "all",
+        "corporateId": null,
+        "bookingType": "all",
+        "rideType": "all",
+        "dateFrom": null,
+        "dateTo": null,
+        "operator": "",
+        "bookFrom": [],
+        "carType": [],
+        "status": [
+            "pending",
+            "pre",
+            "queue",
+            "offered",
+            "confirmed",
+            "booked",
+            "engaged",
+            "droppedOff",
+            "arrived",
+            "action",
+            "accepted"
+        ],
+        "fleetId": "migratecard",
+        "vip": null
+    }
+}

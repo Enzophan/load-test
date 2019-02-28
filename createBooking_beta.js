@@ -25,13 +25,13 @@ redisSetting.on('ready', function () {
     var count = 0;
 
     async.whilst(
-        function () { return count < 50; },
+        function () { return count < 300; },
         function (callback) {
             async.parallel([
                 function (cback) {
                     redisSetting.SRANDMEMBER('geo_example_dn', function (err, data) {
                         cback(null, {
-                            "address": data || '108.13348710536957,16.101309025991455',
+                            "address": data || 'Pickup Location',
                             "geo": data ? data.split(",") : [108.13348710536957, 16.101309025991455],
                             "timezone": "Asia/Saigon"
                         })
@@ -40,7 +40,7 @@ redisSetting.on('ready', function () {
                 function (cback) {
                     redisSetting.SRANDMEMBER('geo_example_dn', function (err, data) {
                         cback(null, {
-                            "address": data || '108.24387073516846,16.055917831642677',
+                            "address": data || 'Destination Location',
                             "geo": data ? data.split(",") : [108.24387073516846, 16.055917831642677],
                             "timezone": "Asia/Saigon"
                         })
@@ -81,22 +81,24 @@ redisSetting.on('ready', function () {
                             }
                         },
                         "request": {
-                            "pickup": {
-                                "address": "3 Tháng 2, Hải Châu, Đà Nẵng",
-                                "geo": [
-                                    108.2189982,
-                                    16.0856233
-                                ],
-                                "timezone": "Asia/Saigon"
-                            },
-                            "destination": {
-                                "address": "Hyatt Regency Danang Resort and Spa, Hòa Hải, Danang, Đà Nẵng",
-                                "geo": [
-                                    108.2637083,
-                                    16.0131183
-                                ],
-                                "timezone": "Asia/Saigon"
-                            },
+                            // "pickup": {
+                            //     "address": "3 Tháng 2, Hải Châu, Đà Nẵng",
+                            //     "geo": [
+                            //         108.2189982,
+                            //         16.0856233
+                            //     ],
+                            //     "timezone": "Asia/Saigon"
+                            // },
+                            // "destination": {
+                            //     "address": "Hyatt Regency Danang Resort and Spa, Hòa Hải, Danang, Đà Nẵng",
+                            //     "geo": [
+                            //         108.2637083,
+                            //         16.0131183
+                            //     ],
+                            //     "timezone": "Asia/Saigon"
+                            // },
+                            "pickup": locs[0],
+                            "destination": locs[1],
                             "pickUpTime": "Now",
                             "vehicleTypeRequest": "Black Car",
                             "type": 0,
@@ -140,7 +142,7 @@ redisSetting.on('ready', function () {
 
                         })
                         .catch(function (err) {
-                            console.log(err);
+                            console.log("err: " + JSON.stringify(err));
                         });
 
                 };

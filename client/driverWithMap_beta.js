@@ -642,8 +642,8 @@ function updateSteps(paths, drv, cb) {
 }
 
 function buildRequestRouteStepsUrl(start, end) {
-    var baseUrl = 'http://router.project-osrm.org/route/v1/driving/'
-    console.log(`${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full`)
+    var baseUrl = 'https://osrm.qupworld.com/route/v1/driving/'
+    console.log(`${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full`);
     return `${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full`
 }
 

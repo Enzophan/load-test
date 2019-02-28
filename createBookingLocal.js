@@ -31,7 +31,7 @@ redisSetting.on('ready', function () {
                 function (cback) {
                     redisSetting.SRANDMEMBER('geo_example_dn', function (err, data) {
                         cback(null, {
-                            "address": data || '108.13348710536957,16.101309025991455',
+                            "address": data || 'Pickup Location',
                             "geo": data ? data.split(",") : [108.13348710536957, 16.101309025991455],
                             "timezone": "Asia/Saigon"
                         })
@@ -40,7 +40,7 @@ redisSetting.on('ready', function () {
                 function (cback) {
                     redisSetting.SRANDMEMBER('geo_example_dn', function (err, data) {
                         cback(null, {
-                            "address": data || '108.24387073516846,16.055917831642677',
+                            "address": data || 'Destination Location',
                             "geo": data ? data.split(",") : [108.24387073516846, 16.055917831642677],
                             "timezone": "Asia/Saigon"
                         })
@@ -50,6 +50,11 @@ redisSetting.on('ready', function () {
 
                 var apiUrl = urlAPI.api;
                 console.log("apiUrl: " + apiUrl);
+
+                // var pickup = JSON.stringify(locs[0]);
+                // var destination = JSON.stringify(locs[1]);
+                // console.log("pickup: " + pickup);
+                // console.log("destination: " + destination);
 
                 var optionsLocal = {
                     method: 'POST',
@@ -81,22 +86,8 @@ redisSetting.on('ready', function () {
                             }
                         },
                         "request": {
-                            "pickup": {
-                                "address": "3 Tháng 2, Hải Châu, Đà Nẵng",
-                                "geo": [
-                                    108.2189982,
-                                    16.0856233
-                                ],
-                                "timezone": "Asia/Saigon"
-                            },
-                            "destination": {
-                                "address": "Hyatt Regency Danang Resort and Spa, Hòa Hải, Danang, Đà Nẵng",
-                                "geo": [
-                                    108.2637083,
-                                    16.0131183
-                                ],
-                                "timezone": "Asia/Saigon"
-                            },
+                            "pickup": locs[0],
+                            "destination": locs[1],
                             "pickUpTime": "Now",
                             "vehicleTypeRequest": "Bike",
                             "type": 0,
