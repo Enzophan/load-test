@@ -25,7 +25,7 @@ var _ = require('underscore');
 var fleetId = "migratecard";
 var connected = {};
 var start = process.argv ? process.argv[2] ? parseInt(process.argv[2]) : 1 : 1;
-var end = process.argv ? process.argv[3] ? parseInt(process.argv[3]) : 100 : 100;
+var end = process.argv ? process.argv[3] ? parseInt(process.argv[3]) : 1000 : 1000;
 console.log(start);
 console.log(end);
 // return;
@@ -34,7 +34,7 @@ async.whilst(
     function (callback) {
         // var phone = "+1201" + (9000000 + start);
         // var phone = "+84934789923";
-        var phone = "+849010" + (10000 + start);
+        var phone = "+849040" + (20000 + start);
 
         createConnection({
             "fleetId": fleetId, "phone": phone, "geo": [16.0604567, 108.2161283], count: start
@@ -644,7 +644,7 @@ function updateSteps(paths, drv, cb) {
 function buildRequestRouteStepsUrl(start, end) {
     var baseUrl = 'https://osrm.qupworld.com/route/v1/driving/'
     console.log(`${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full`);
-    return `${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full`
+    return `${baseUrl}${start[0]},${start[1]};${end[0]},${end[1]}?geometries=geojson&steps=true&overview=full&zoneId=559f71aee4b078015fe5427c`
 }
 
 function addRoute(phone, geos) {
